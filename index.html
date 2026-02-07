@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day 🌹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+  margin:0;height:100vh;overflow:hidden;
+  background:linear-gradient(135deg,#ff5f6d,#ffc371);
+  display:flex;align-items:center;justify-content:center;
+}
+.card{
+  position:relative;z-index:2;
+  background:#fff;width:320px;padding:22px;border-radius:22px;
+  text-align:center;box-shadow:0 20px 45px rgba(0,0,0,.25);
+  animation:pop 1s ease;
+}
+@keyframes pop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+h1{color:#e6005c;margin:6px 0}
+p{color:#444;line-height:1.5}
+button{
+  margin-top:14px;padding:10px 22px;border:0;border-radius:26px;
+  background:#ff4d6d;color:#fff;font-size:15px;cursor:pointer;
+}
+#love{margin-top:14px;font-size:22px;color:#e6005c;font-weight:700}
+.rose{
+  position:fixed;top:-10%;font-size:22px;animation:fall linear infinite;
+  opacity:.9;z-index:1
+}
+@keyframes fall{
+  to{transform:translateY(120vh) rotate(360deg)}
+}
+.heart{
+  position:absolute;font-size:18px;animation:float 1.5s ease forwards;
+}
+@keyframes float{
+  to{transform:translateY(-120px);opacity:0}
+}
+footer{margin-top:8px;font-style:italic}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🌹 Happy Rose Day 🌹</h1>
+  <p>To my beautiful Rose 💖</p>
+  <p>Jaise ye rose simple hoke bhi special hota hai,<br>
+     waise hi tum meri life ko special banati ho ❤️</p>
+  <button onclick="surprise()">Click for Surprise 💌</button>
+  <div id="love">💗</div>
+  <footer>— Yours Forever 😌</footer>
+</div>
+
+<script>
+const roses = ['🌹','🌸','💐'];
+for(let i=0;i<20;i++){
+  const r=document.createElement('div');
+  r.className='rose';
+  r.innerText=roses[Math.floor(Math.random()*roses.length)];
+  r.style.left=Math.random()*100+'vw';
+  r.style.animationDuration=5+Math.random()*5+'s';
+  r.style.animationDelay=Math.random()*5+'s';
+  document.body.appendChild(r);
+}
+function surprise(){
+  document.getElementById('love').innerHTML='I Love You ❤️🌹';
+  for(let i=0;i<10;i++){
+    const h=document.createElement('div');
+    h.className='heart';
+    h.innerText='❤️';
+    h.style.left=(120+Math.random()*80)+'px';
+    h.style.bottom='90px';
+    document.querySelector('.card').appendChild(h);
+    setTimeout(()=>h.remove(),1500);
+  }
+}
+</script>
+</body>
+</html>
